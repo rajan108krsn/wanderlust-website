@@ -1,0 +1,158 @@
+body {
+   display:flex;
+   flex-direction:column;
+    min-height:100vh;
+}
+.container{
+    flex : 1;
+}
+
+.navbar {
+    height:5rem;
+    background-color: white;
+}
+.navbar-brand{
+    color: red !important;
+}
+.fa-compass{
+    color:red;
+    font-size: 2rem;
+}
+.nav-link{
+    color:#222222 !important;
+}
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+.f-info-links{
+    
+    width: 100%;
+}
+.f-info-social{
+    width: 100%;
+    font-size:1.4rem;
+}
+.f-info-social i{
+    margin-right: 1rem;
+}
+.f-info{
+    display: grid;
+    place-items: center;
+    text-align: center;;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+
+.card{
+    border:none !important;
+    margin-bottom: 2rem;;
+}
+.card img{
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+    border-radius: 10px;;
+}
+/* .card-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+} */
+.card-body{
+    padding: 0 !important;;
+}
+.card-body p{
+    font: weight 4px;;
+    color: #222222;
+    font-family: 'Poppins', sans-serif;
+}
+
+.row a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.row a:hover img {
+    filter: brightness(0.8);
+}
+
+.new-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.btn-new{
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.3rem;
+}
+
+input{
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+textarea{
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}   
+.img-thumbnail{
+    border-radius: 10px;
+    border-radius: 30px;
+}
+
+.btn-black{
+    margin-left: 30px;
+    background-color:black;
+    color:white;
+    border:none;
+    border-radius: 5px;
+}
+
+.btn-group{
+    display: flex;
+    justify-content: space-between;
+    align-items: evenly;
+    margin-top: 1rem;
+}
+.btn-black2{
+    background-color:black;
+    margin-left: 24px;
+    color:white;
+    border:none;
+    border-radius: 5px;
+    width: 100%;
+}
+.sub-btn{
+    background-color: white;
+    border-radius: 5px;
+    height: 2.4rem;
+    width: 5rem;
+}
+#toggle-dark-mode {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    background-color: #eee;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
