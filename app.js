@@ -69,9 +69,12 @@ async function main() {
 
 
 // Home route
-app.get('/', (req, res) => {
-    res.send('Hello World');
+// const Listing = require('./models/listing');
+
+app.get('/', (_, res) => {
+    res.render("listings/png");
 });
+
 app.get("/demouser", async(req,res)=>{
     let fakeUser = new User({
         email: "student@gmail.com",
@@ -81,9 +84,9 @@ app.get("/demouser", async(req,res)=>{
     res.send(registeredUser);
 })
 // Handle 404 errors
-// app.all("*", (req, res, next) => {
-//     next(new ExpressError('Page Not Found', 404));
-// });
+app.all("*", (req, res, next) => {
+    next(new ExpressError('Page Not Found', 404));
+});
 
 // // Global error handler
 // app.use((err, req, res, next) => {

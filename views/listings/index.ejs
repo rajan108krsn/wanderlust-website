@@ -1,103 +1,118 @@
-<% layout('layouts/boilerplate')%>
+<% layout('layouts/boilerplate') %>
 
 <body>
-    <style>
-        #filters {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-        }
-  
-        .filter {
-          text-align: center;
-          margin-right: 2rem;
-          margin-top: 2rem;
-          opacity: 0.7;
-        }
-  
-        .filter:hover {
-          transition: 0.5s;
-          opacity: 1;
-          cursor: pointer;
-        }
-        .filter p{
-          font-size: 0.8rem; 
-        }
-        .tex-info{
-          display: none;
-        }
-        .tax-toggel{
-          border: 1px solid black;
-          border-radius: 1rem;
-          height: 3.25rem;
-          padding: 1rem;
-         display: flex;
-         align-items: center;
-        
-        }
-      </style>
-      <!-- <h3>All listing</h3> -->
-      <div id="filters">
-        <div class="filter">
-          <div>
-            <i class="fa-solid fa-fire"></i>
-            <p>Trending</p>
-          </div>
-        </div>
-        <div class="filter">
-          <i class="fa-solid fa-bed"></i>
-          <p>Rooms</p>
-        </div>
-        <div class="filter">
-          <i class="fa-solid fa-mountain-city"></i>
-          <p>Iconic City</p>
-        </div>
-        <div class="filter">
-          <i class="fa-solid fa-mountain-sun"></i>
-          <p>Mountain</p>
-        </div>
-        <div class="filter">
-          <i class="fa-regular fa-chess-rook"></i>
-          <p>castles</p>
-        </div>
-        <div class="filter">
-          <i class="fa-solid fa-person-swimming"></i>
-          <p>Amazing Pool</p>
-        </div>
-        <div class="filter">
-          <i class="fa-solid fa-campground"></i>
-          <p>Camping</p>
-        </div>
-        <div class="filter">
-          <i class="fa-solid fa-tractor"></i>
-          <p>Farms</p>
-        </div>
-        <div class="filter">
-          <i class="fa-solid fa-snowflake"></i>
-          <p>Arctic</p>
-        </div>
-        <div class="filter">
-          <i class="fa-solid fa-igloo"></i>
-          <p>Domes</p>
-        </div>
-  
-      </div>
-    <h3 style="margin-top: 1.3rem;">All Listings</h3>
-    <br>
-    <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1">
-        <% allListings.forEach(function(listing) { %>
-            <a href="/listings/<%= listing._id %>">
-                <div class="card col" style="width: 20rem;">
-                    <img src="<%=listing.image.url%>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">
-                            <%= listing.title %><br>
-                            <i>5 nights</i><br>
-                            &#8377; <%= listing.price.toLocaleString("en-in") %><br>
-                        </p>
-                    </div>
-                </div>
-            </a>
-        <% }); %>
+  <style>
+    #filters {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .filter {
+      text-align: center;
+      opacity: 0.7;
+      cursor: pointer;
+    }
+
+    .filter:hover {
+      transition: 0.3s;
+      opacity: 1;
+    }
+
+    .filter p {
+      font-size: 0.8rem;
+      margin: 0.5rem 0 0;
+    }
+
+    .tex-info {
+      display: none;
+    }
+
+    .tax-toggel {
+      border: 1px solid black;
+      border-radius: 1rem;
+      height: 3.25rem;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Padding adjustments to prevent text from touching edges */
+    .card-body {
+      margin-left: 1rem;
+      margin-top: 1rem;
+
+    }
+
+    .card {
+      border-radius: 0.5rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: add some shadow to card */
+    }
+  </style>
+
+  <!-- Filter Icons Section -->
+  <div id="filters" class="mt-4 mb-3">
+    <div class="filter">
+      <i class="fa-solid fa-fire"></i>
+      <p>Trending</p>
     </div>
+    <div class="filter">
+      <i class="fa-solid fa-bed"></i>
+      <p>Rooms</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-mountain-city"></i>
+      <p>Iconic City</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-mountain-sun"></i>
+      <p>Mountain</p>
+    </div>
+    <div class="filter">
+      <i class="fa-regular fa-chess-rook"></i>
+      <p>Castles</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-person-swimming"></i>
+      <p>Amazing Pool</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-campground"></i>
+      <p>Camping</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-tractor"></i>
+      <p>Farms</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-snowflake"></i>
+      <p>Arctic</p>
+    </div>
+    <div class="filter">
+      <i class="fa-solid fa-igloo"></i>
+      <p>Domes</p>
+    </div>
+  </div>
+
+  <!-- All Listings Section -->
+  <h3 class="mt-4 mb-3">All Listings</h3>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <% allListings.forEach(function(listing) { %>
+      <div class="col">
+        <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+          <div class="card h-100 shadow-sm">
+            <img src="<%= listing.image.url %>" class="card-img-top" alt="Listing Image">
+            <div class="card-body">
+              <p class="card-text">
+                <%= listing.title %><br>
+                <i>5 nights</i><br>
+                &#8377; <%= listing.price.toLocaleString("en-in") %><br>
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% }); %>
+  </div>
 </body>

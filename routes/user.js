@@ -67,21 +67,21 @@ router.get("/login", (req, res) => {
     res.render("users/login");
 });
 
-// Handle Login Authentication
-router.post(
-    "/login",
-    passport.authenticate("local", {
-        failureFlash: true,
-        failureRedirect: "/login",
-        keepSessionInfo: true, // Keep session info intact
-    }),
-    (req, res) => {
-        const redirectUrl = req.session.returnTo || "/listings"; // Redirect to saved URL or default to /listings
-        delete req.session.returnTo; // Clean up session
-        req.flash("success", "Welcome back!");
-        res.redirect(redirectUrl);
-    }
-);
+// // Handle Login Authentication
+// router.post(
+//     "/login",
+//     passport.authenticate("local", {
+//         failureFlash: true,
+//         failureRedirect: "/login",
+//         keepSessionInfo: true, // Keep session info intact
+//     }),
+//     (req, res) => {
+//         const redirectUrl = req.session.returnTo || "/listings"; // Redirect to saved URL or default to /listings
+//         delete req.session.returnTo; // Clean up session
+//         req.flash("success", "Welcome back!");
+//         res.redirect(redirectUrl);
+//     }
+// );
 
 router.post(
     "/login", saveRedirectUrl, 
